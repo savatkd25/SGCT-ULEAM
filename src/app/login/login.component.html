@@ -1,0 +1,32 @@
+<div class="container__login">
+    <div class="title">Inicio de Sesión</div>
+    <form action="#" id="formulario">
+        <div class="detalles-usuario__login">
+            <!-- CORREO -->
+            <div class="input-box formulario__grupo" id="grupo__correo">
+                <span class="detalles">Correo Institucional</span>
+                <div class="formulario__grupo-input">
+                    <input type="email" class="formulario__input" name="correo" id="correo"
+                        placeholder="Ingresa tu correo institucional">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">Ingrese un correo válido.</p>
+            </div>
+            <!-- CONTRASEÑA -->
+            <div class="input-box formulario__grupo" id="grupo__password">
+                <span class="detalles">Contraseña</span>
+                <div class="formulario__grupo-input">
+                    <input type="password" class="formulario__input" name="password" id="password"
+                        placeholder="Ingresa tu contraseña">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">Ingrese una contraseña.</p>
+            </div>
+        </div>
+        <div class="button__login">
+            <button type="submit">Inciar Sesion</button><br>
+            <span>¿No tienes cuenta? <a href="../registro/"
+                    style="text-decoration: none; color: black; font-weight: 600;">Registrate</a></span>
+        </div>
+    </form>
+</div>
