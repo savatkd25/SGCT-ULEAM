@@ -1,74 +1,57 @@
 <div class="container">
-    <div class="title">Registro</div>
-    <form action="#" id="formulario">
-        <div class="detalles-usuario">
-            <!-- NOMBRE -->
-            <div class="input-box formulario__grupo" id="grupo__nombre">
-                <span class="detalles">Nombre Completo</span>
-                <div class="formulario__grupo-input">
-                    <input type="text" class="formulario__input" name="nombre" id="nombre"
-                        placeholder="Ingresa tu nombre">
-                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                </div>
-                <p class="formulario__input-error">El nombre tiene que ser de 1 a 50 caracteres</p>
+    <div class="register-box">
+        <h2>Registro</h2>
+        <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input id="nombre" type="text" formControlName="nombre">
+                <div *ngIf="hasError('nombre', 'required')">El nombre es requerido.</div>
+                <div *ngIf="hasError('nombre', 'minlength')">El nombre debe tener al menos 10 caracteres.</div>
+                <div *ngIf="hasError('nombre', 'pattern')">El nombre solo debe contener letras.</div>
             </div>
-            <!-- CORREO -->
-            <div class="input-box formulario__grupo" id="grupo__correo">
-                <span class="detalles">Correo Institucional</span>
-                <div class="formulario__grupo-input">
-                    <input type="email" class="formulario__input" name="correo" id="correo"
-                        placeholder="Ingresa tu correo institucional">
-                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+
+            <div>
+                <label for="correo">Correo:</label>
+                <input id="correo" type="email" formControlName="correo">
+                <div *ngIf="hasError('correo', 'required')">El correo es requerido.</div>
+                <div *ngIf="hasError('correo', 'pattern')">El correo debe tener el formato live.uleam.edu.ec
                 </div>
-                <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y
-                    guion bajo.</p>
             </div>
-            <!-- CARRERA -->
-            <div class="input-box formulario__grupo" id="grupo__carrera">
-                <span class="detalles">Carrera</span>
-                <div class="formulario__grupo-input">
-                    <input type="text" class="formulario__input" name="carrera" id="carrera"
-                        placeholder="Ingresa tu carrera">
-                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                </div>
-                <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener
-                    numeros, letras y guion bajo.</p>
+
+            <div>
+                <label for="carrera">Carrera:</label>
+                <input id="carrera" type="text" formControlName="carrera">
+                <div *ngIf="hasError('carrera', 'required')">La carrera es requerida.</div>
+                <div *ngIf="hasError('carrera', 'minlength')">La carrera debe tener al menos 10 caracteres.</div>
+                <div *ngIf="hasError('carrera', 'pattern')">La carrera solo debe contener letras.</div>
             </div>
-            <!-- TELEFONO -->
-            <div class="input-box formulario__grupo" id="grupo__telefono">
-                <span class="detalles">Teléfono</span>
-                <div class="formulario__grupo-input">
-                    <input type="text" class="formulario__input" name="telefono" id="telefono"
-                        placeholder="Ingresa tu teléfono">
-                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                </div>
-                <p class="formulario__input-error">Ingrese un numero válido.</p>
+
+            <div>
+                <label for="telefono">Teléfono:</label>
+                <input id="telefono" type="tel" formControlName="telefono">
+                <div *ngIf="hasError('telefono', 'required')">El teléfono es requerido.</div>
+                <div *ngIf="hasError('telefono', 'pattern')">El teléfono solo debe contener números.</div>
             </div>
-            <!-- CONTRASEÑA -->
-            <div class="input-box formulario__grupo" id="grupo__password">
-                <span class="detalles">Contraseña</span>
-                <div class="formulario__grupo-input">
-                    <input type="password" class="formulario__input" name="password" id="password"
-                        placeholder="Ingresa tu Contaseña">
-                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                </div>
-                <p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
+
+            <div>
+                <label for="contrasena">Contraseña:</label>
+                <input id="contrasena" type="password" formControlName="contrasena">
+                <div *ngIf="hasError('contrasena', 'required')">La contraseña es requerida.</div>
+                <div *ngIf="hasError('contrasena', 'minlength')">La contraseña debe tener al menos 6 caracteres.</div>
+                <div *ngIf="hasError('contrasena', 'pattern')">La contraseña debe contener al menos una letra mayúscula,
+                    una
+                    minúscula, un número y un carácter especial.</div>
             </div>
-            <!-- CONTRASEÑA 2 -->
-            <div class="input-box formulario__grupo" id="grupo__password2">
-                <span class="detalles">Confirma tu contraseña</span>
-                <div class="formulario__grupo-input">
-                    <input type="password" class="formulario__input" name="password2" id="password2"
-                        placeholder="Confirma tu contraseña">
-                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                </div>
-                <p class="formulario__input-error">Las contraseñas deben ser iguales</p>
+
+            <div>
+                <label for="confirmarContrasena">Confirmar Contraseña:</label>
+                <input id="confirmarContrasena" type="password" formControlName="confirmarContrasena">
+                <div *ngIf="hasError('confirmarContrasena', 'required')">Confirmar la contraseña es requerido.</div>
+                <div *ngIf="registroForm.hasError('passwordMismatch')">Las contraseñas no coinciden.</div>
             </div>
-        </div>
-        <div class="button">
-            <button type="submit">Registrarse</button><br>
-            <span>¿Ya tienes cuenta? <a href="../login/"
-                    style="text-decoration: none; color: black; font-weight: 600;">Inicia Sesión</a></span>
-        </div>
-    </form>
+
+            <button type="submit" [disabled]="registroForm.invalid">Registrarse</button>
+        </form>
+        <p>¿Ya tienes cuenta? <a  href="/login">Inicia Sesión</a></p>
+    </div>
 </div>

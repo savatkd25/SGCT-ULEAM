@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +10,6 @@ import { RegistroComponent } from './registro/registro.component';
 import { DocentesComponent } from './docentes/docentes.component';
 import { RegistroTutoriasComponent } from './registro-tutorias/registro-tutorias.component';
 import { TemasComponent } from './temas/temas.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +18,10 @@ import { TemasComponent } from './temas/temas.component';
     RegistroComponent,
     DocentesComponent,
     RegistroTutoriasComponent,
-    TemasComponent
+    TemasComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
